@@ -11,89 +11,78 @@
     <TextView
         android:layout_width="120dp"
         android:layout_height="55dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
         android:text="@string/title_to_do"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/title_to_do"
-        android:layout_width="370dp"
+        android:layout_width="331dp"
         android:layout_height="51dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="104dp"
         android:ems="10"
         android:hint="@string/hint_the_title"
         android:inputType="textPersonName"
         android:textColor="#6A4B4B"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.211"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.111" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="213dp"
         android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="192dp"
         android:text="@string/description_to_do"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#151313"
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="131dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/desce_to_do"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="307dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="280dp"
         android:ems="10"
         android:hint="@string/hint_the_description"
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/date_start_bton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="181dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="396dp"
         android:textColor="#FFF9F9"
         android:textColorLink="#36073E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.435" />
-
-    <Button
-        android:id="@+id/date_end_btm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FFF4F4"
-        android:textColorLink="#36073E"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="376dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/add_btm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="572dp"
         android:text="add"
         android:textColorHint="#9F2424"
         android:textColorLink="#151515"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="458dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.Fragmenttodo.FragmentListAdd
-import com.example.todolist.Fragmenttodo.Tododate
 import com.example.todolist.database.Todo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 const val KEY_ID="my-todolist"
@@ -17,7 +16,7 @@ class Todolist:Fragment() {
     private lateinit var fab_add:FloatingActionButton
     private lateinit var name_todo_list: RecyclerView
     val toDoViewModel by lazy {
-        ViewModelProvider(this).get(toDoViewModel::class.java)
+        ViewModelProvider(this).get(ToDoViewModel::class.java)
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.meau_main,menu)
@@ -41,6 +40,16 @@ class Todolist:Fragment() {
 
         fab_add=view.findViewById(R.id.fab_add)
         fab_add.setOnClickListener {
+            val args=Bundle()
+            val fragment= FragmentListAdd()
+            fragment.arguments=args
+            activity?.let{
+                it.supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.fragment_Container,fragment)
+                    .addToBackStack(null)
+                    .commit()
+            }
         }
         return view
 

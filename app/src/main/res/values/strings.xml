@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">To DO List</string>
+    <string name="title_to_do">Title::</string>
+    <string name="hint_the_title">Enter title to do ?</string>
+    <string name="description_to_do">Description ::</string>
+    <string name="hint_the_description">Enter description to do ?</string>
+</resources>

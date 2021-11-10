@@ -1,6 +1,7 @@
 package com.example.todolist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
@@ -11,12 +12,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.Fragmenttodo.FragmentListAdd
 import com.example.todolist.database.Todo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.util.*
+import kotlin.math.log
+
 const val KEY_ID="my-todolist"
 class Todolist:Fragment() {
     private lateinit var fab_add:FloatingActionButton
+    val format="EEE, yyyy MMM dd"
+
     private lateinit var name_todo_list: RecyclerView
-    val toDoViewModel by lazy {
-        ViewModelProvider(this).get(ToDoViewModel::class.java)
+    val toDoListViewModel by lazy {
+        ViewModelProvider(this).get(ToDoListViewModel::class.java)
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.meau_main,menu)
@@ -56,7 +62,7 @@ class Todolist:Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toDoViewModel.LiveDataTodo.observe(
+        toDoListViewModel.LiveDataTodo.observe(
             viewLifecycleOwner, Observer {
                 updateUI(it)
             }
@@ -75,15 +81,21 @@ class Todolist:Fragment() {
         val titleTextView: TextView = itemView.findViewById(R.id.title_item_todo)
         val descrTextView: TextView = itemView.findViewById(R.id.decpation_item_todo)
         val dateStartButton: TextView= itemView.findViewById(R.id.data_start_item)
-        val dateEndButton: TextView = itemView.findViewById(R.id.data_end_item)
+       val dale_Image:ImageView=itemView.findViewById(R.id.delete_Iamge)
+        private  var dat_done:TextView=itemView.findViewById(R.id.doneTime)
         val checkBoxIsCheck: CheckBox = itemView.findViewById(R.id.ischeck_item)
 
         init {
             titleTextView.setOnClickListener(this)
             descrTextView.setOnClickListener(this)
             dateStartButton.setOnClickListener(this)
-            dateEndButton.setOnClickListener(this)
+              dat_done.setOnClickListener (this)
             // checkBoxIsCheck.setOnClickListener(this)
+            dale_Image.setOnClickListener {
+                toDoListViewModel.deleteTodo(todoA)
+
+
+            }
         }
 
 
@@ -91,18 +103,34 @@ class Todolist:Fragment() {
             this.todoA = todo
             titleTextView.text = todo.title
             descrTextView.text = todo.description
-            dateStartButton.text = todo.dateStart.toString()
-            dateEndButton.text = todo.dateEnd.toString()
+           dateStartButton.text = android.text.format.DateFormat.format(format,todo.dateStart)
+//            val currentDate=Date()
+//          if (todoA.dateStart!=null){
+//              dateStartButton.text = android.text.format.DateFormat.format(format,todo.dateStart)
+//              dateStartButton.visibility=if (currentDate.after(todoA.dateEnd)){
+//                //  dat_done.error="dsdds"
+//                  View.VISIBLE
+//              }else{
+//                  View.GONE
+//              }
+//          }
+
+
             //   checkBoxIsCheck.text=todo.isSoled
 
         }
 
         override fun onClick(v: View?) {
+
+           // toDoListViewModel.deleteTodo(todoA)
             if (v==itemView){
+               // toDoListViewModel.deleteTodo(todoA)
+                val fragment= FragmentListAdd()
+                toDoListViewModel.updateTodo(todoA)
                 val args=Bundle()
                 args.putSerializable(KEY_ID,todoA.id)
-                val fragment= FragmentListAdd()
                 fragment.arguments=args
+
                         activity?.let{
                             it.supportFragmentManager
                                 .beginTransaction()

@@ -1,8 +1,10 @@
 package com.example.todolist.Fragmenttodo
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,19 +12,22 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
-import com.example.todolist.R
+
+import com.example.todolist.*
 import com.example.todolist.database.Todo
 import java.util.*
-const val CRIME_DATE_KEY="AB"
-class FragmentListAdd:Fragment(),DatePickerDialogFrahment.DatePickerCallback {
+ const val TODO_DATE_KEY="AB"
+    class FragmentListAdd:Fragment(),DatePickerDialogFrahment.DatePickerCallback {
     private lateinit var todoA: Todo
     private lateinit var editTitle: EditText
     private lateinit var editDesccrp: EditText
     private lateinit var dateStr: Button
     private lateinit var addbtm: Button
 
+    val format="yyyy-MM-ddd"
 
+    private val framentViewModel by lazy{
+        ViewModelProvider(this).get(TodoAFragmentViewModel::class.java) }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,7 +38,6 @@ class FragmentListAdd:Fragment(),DatePickerDialogFrahment.DatePickerCallback {
         editDesccrp = view.findViewById(R.id.desce_to_do)
         dateStr = view.findViewById(R.id.date_start_bton)
         addbtm = view.findViewById(R.id.add_btm)
-
 
 
         return view
@@ -56,15 +60,21 @@ class FragmentListAdd:Fragment(),DatePickerDialogFrahment.DatePickerCallback {
         }
 
         override fun afterTextChanged(s: Editable?) {}
+
     }
+
 
     override fun onStart() {
         super.onStart()
+        editTitle.addTextChangedListener(textWatcherOne)
+        editDesccrp.addTextChangedListener(textWatcherTwo)
+//        isSolvedCheckBox.setOnCheckedChangeListener { _, isChecked ->
+//            crime.isSolved=isChecked
 
         dateStr.setOnClickListener {
-           todoA=Todo()
+
             val args = Bundle()
-            args.putSerializable(CRIME_DATE_KEY, todoA.dateStart)
+            args.putSerializable(TODO_DATE_KEY, todoA.dateStart)
             val datePicker = DatePickerDialogFrahment()
 
             datePicker.arguments = args
@@ -72,14 +82,59 @@ class FragmentListAdd:Fragment(),DatePickerDialogFrahment.DatePickerCallback {
             datePicker.show(this.parentFragmentManager, "data piker")
 
         }
+      addbtm.setOnClickListener {
+
+          framentViewModel.addTodo(todoA)
+
+          val fragment = Todolist()
+
+          activity?.let {
+              it.supportFragmentManager.beginTransaction()
+                  .replace(R.id.fragment_Container, fragment)
+                  .commit()
+          }
+
+      }
+
 
 
     }
 
     override fun onDateSelected(date: Date) {
         todoA.dateStart=date
-        dateStr.text=date.toString()
+        dateStr.text= DateFormat.format(format,todoA.dateStart)
+
     }
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+          todoA= Todo()
+            val todoId=arguments?.getSerializable(KEY_ID) as UUID?
+                todoId?.let {
+                    framentViewModel.loadTodo(it)
+                }
+
+        }
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+            framentViewModel.todoLiveData.observe(
+                viewLifecycleOwner,androidx.lifecycle.Observer {
+                    it?.let {
+                        todoA=it
+                        editTitle.setText(it.title)
+                        editDesccrp.setText(it.description)
+                        dateStr.text=it.dateStart.toString()
+
+                    }
+                }
+            )
+        }
+        override fun onStop() {
+
+            super.onStop()
+            framentViewModel.saveUpdata(todoA)
+        }
+
 
 
 

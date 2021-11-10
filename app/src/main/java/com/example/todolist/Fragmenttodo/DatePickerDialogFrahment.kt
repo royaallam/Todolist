@@ -7,7 +7,7 @@ import androidx.fragment.app.DialogFragment
 import java.util.*
 
 class DatePickerDialogFrahment:DialogFragment() {
-
+    val format="yyyy-MM-ddd"
 
 
     interface DatePickerCallback{
@@ -17,10 +17,12 @@ class DatePickerDialogFrahment:DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        val date = arguments?.getSerializable(CRIME_DATE_KEY) as Date
+        val date = arguments?.getSerializable(TODO_DATE_KEY) as Date
 
         val calendar = Calendar.getInstance()
+
         calendar.time = date
+
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)

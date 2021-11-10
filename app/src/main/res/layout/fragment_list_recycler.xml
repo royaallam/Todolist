@@ -20,10 +20,12 @@
         android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="328dp"
-        android:layout_marginTop="472dp"
+        android:layout_marginStart="336dp"
         android:clickable="true"
-        app:layout_constraintStart_toStartOf="@+id/todo_Recycler_VIew"
-        app:layout_constraintTop_toBottomOf="@+id/todo_Recycler_VIew"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.96"
         app:srcCompat="@drawable/image_2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,7 +24,7 @@
         android:layout_width="331dp"
         android:layout_height="51dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
         android:hint="@string/hint_the_title"
         android:inputType="textPersonName"
@@ -63,8 +63,8 @@
 
     <Button
         android:id="@+id/date_start_bton"
-        android:layout_width="181dp"
-        android:layout_height="43dp"
+        android:layout_width="300dp"
+        android:layout_height="47dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="396dp"
         android:textColor="#FFF9F9"

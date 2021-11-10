@@ -21,7 +21,8 @@ class TodoRepository private constructor(context: Context) {
 
 
     fun getAllTode(): LiveData<List<Todo>> = todoDao.getAllTodo()
-    fun getCrime(id: UUID): LiveData<Todo>  {
+
+    fun getTodo(id: UUID):LiveData<Todo?>{
         return todoDao.getTodo(id)
     }
     fun updataTodo(todo: Todo) {
@@ -33,8 +34,12 @@ class TodoRepository private constructor(context: Context) {
         executor.execute {
             todoDao.addTodo(todo)
         }
+    }
 
-
+    fun deleteTodo (todo: Todo){
+        executor.execute {
+            todoDao.deleteTodo(todo)
+        }
     }
 
 

@@ -136,16 +136,23 @@ class Todolist:Fragment() {
 //
 //            }
 
-
+            if (todoA.isChecked){
+                dale_Image.visibility = View.GONE
+                edit_Image.visibility = View.GONE
+            }else{
+                dale_Image.visibility=View.VISIBLE
+                edit_Image.visibility =View.VISIBLE
+            }
             checkBoxIsCheck.setOnCheckedChangeListener { buttonView, isChecked ->
                 todoA.isChecked = isChecked
-                if (isChecked){
+                if (todoA.isChecked){
                     dale_Image.visibility = View.GONE
                     edit_Image.visibility = View.GONE
                 }else{
                     dale_Image.visibility=View.VISIBLE
                     edit_Image.visibility =View.VISIBLE
                 }
+
 
                 toDoListViewModel.updateTodo(todoA)
 
@@ -175,11 +182,7 @@ class Todolist:Fragment() {
                         .commit()
                 }
             }
-        if (v == checkBoxIsCheck) {
-            todoA.isChecked
-                dale_Image.visibility = View.GONE
-                edit_Image.visibility = View.GONE
-            }
+
             }
         }
 

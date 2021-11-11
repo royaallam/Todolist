@@ -23,7 +23,7 @@ import java.util.*
     private lateinit var editDesccrp: EditText
     private lateinit var dateStr: Button
     private lateinit var addbtm: Button
-
+    private lateinit var editup:Button
     val format="yyyy-MM-ddd"
 
     private val framentViewModel by lazy{
@@ -38,7 +38,7 @@ import java.util.*
         editDesccrp = view.findViewById(R.id.desce_to_do)
         dateStr = view.findViewById(R.id.date_start_bton)
         addbtm = view.findViewById(R.id.add_btm)
-
+        editup=view.findViewById(R.id.edit_btn)
 
         return view
     }
@@ -95,6 +95,19 @@ import java.util.*
           }
 
       }
+        editup.setOnClickListener {
+
+            framentViewModel.saveUpdata(todoA)
+            val fragment = Todolist()
+
+            activity?.let {
+                it.supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_Container, fragment)
+                    .commit()
+            }
+
+        }
+
 
 
 
@@ -133,6 +146,7 @@ import java.util.*
 
             super.onStop()
             framentViewModel.saveUpdata(todoA)
+
         }
 
 

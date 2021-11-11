@@ -9,7 +9,7 @@ import java.util.*
     @PrimaryKey val id:UUID= UUID.randomUUID(),
                 var title:String="" ,
                 var description:String="",
-                var dateStart: Date=Date(),
+                var dateStart: Date?=null,
                 var dateEnd: Date=Date(),
                 var isChecked:Boolean=false
 

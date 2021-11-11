@@ -18,6 +18,7 @@ import kotlin.math.log
 const val KEY_ID="my-todolist"
 class Todolist:Fragment() {
     private lateinit var fab_add:FloatingActionButton
+  // private lateinit var dat_done:TextView
     val format="EEE, yyyy MMM dd"
 
     private lateinit var name_todo_list: RecyclerView
@@ -43,7 +44,7 @@ class Todolist:Fragment() {
         name_todo_list = view.findViewById(R.id.todo_Recycler_VIew)
         val linearLayoutManager= LinearLayoutManager(context)
        name_todo_list.layoutManager = linearLayoutManager
-
+       // dat_done=view.findViewById(R.id.doneTime)
         fab_add=view.findViewById(R.id.fab_add)
         fab_add.setOnClickListener {
             val args=Bundle()
@@ -81,19 +82,24 @@ class Todolist:Fragment() {
         val titleTextView: TextView = itemView.findViewById(R.id.title_item_todo)
         val descrTextView: TextView = itemView.findViewById(R.id.decpation_item_todo)
         val dateStartButton: TextView= itemView.findViewById(R.id.data_start_item)
-       val dale_Image:ImageView=itemView.findViewById(R.id.delete_Iamge)
-        private  var dat_done:TextView=itemView.findViewById(R.id.doneTime)
+      val dale_Image:ImageView=itemView.findViewById(R.id.delete_Iamge)
+        val edit_Image:ImageView=itemView.findViewById(R.id.edit_ima)
+      val   dat_done:TextView=itemView.findViewById(R.id.doneTime)
         val checkBoxIsCheck: CheckBox = itemView.findViewById(R.id.ischeck_item)
 
         init {
             titleTextView.setOnClickListener(this)
             descrTextView.setOnClickListener(this)
-            dateStartButton.setOnClickListener(this)
-              dat_done.setOnClickListener (this)
+            checkBoxIsCheck.setOnClickListener(this)
+            //dateStartButton.setOnClickListener(this)
+              //dat_done.setOnClickListener (this)
             // checkBoxIsCheck.setOnClickListener(this)
+//            edit_Image.setOnClickListener {
+//                toDoListViewModel.updateTodo(todoA)
+//            }
+            edit_Image.setOnClickListener(this)
             dale_Image.setOnClickListener {
                 toDoListViewModel.deleteTodo(todoA)
-
 
             }
         }
@@ -101,19 +107,49 @@ class Todolist:Fragment() {
 
         fun bing(todo: Todo) {
             this.todoA = todo
+            if (todoA.dateStart != null) {
+                dateStartButton.text = android.text.format.DateFormat.format(format, todo.dateStart)
+            }
             titleTextView.text = todo.title
             descrTextView.text = todo.description
-           dateStartButton.text = android.text.format.DateFormat.format(format,todo.dateStart)
-//            val currentDate=Date()
-//          if (todoA.dateStart!=null){
-//              dateStartButton.text = android.text.format.DateFormat.format(format,todo.dateStart)
-//              dateStartButton.visibility=if (currentDate.after(todoA.dateEnd)){
-//                //  dat_done.error="dsdds"
-//                  View.VISIBLE
-//              }else{
-//                  View.GONE
-//              }
-//          }
+
+            checkBoxIsCheck.isChecked = todoA.isChecked
+            val currentDate=Date()
+
+         if (todoA.dateStart != null){
+              if (currentDate.after(todoA.dateStart)) {
+                  dat_done.error = ""
+              }
+          }
+//            checkBoxIsCheck.visibility=if (todoA.isChecked){
+//                dat_done.visibility=View.GONE
+//                View.VISIBLE
+//            }else{
+//                View.GONE
+//            }
+
+//            if (checkBoxIsCheck.isChecked) {
+//                todoA.isChecked
+//            }
+//
+//            if (todoA.isChecked) {
+//
+//            }
+
+
+            checkBoxIsCheck.setOnCheckedChangeListener { buttonView, isChecked ->
+                todoA.isChecked = isChecked
+                if (isChecked){
+                    dale_Image.visibility = View.GONE
+                    edit_Image.visibility = View.GONE
+                }else{
+                    dale_Image.visibility=View.VISIBLE
+                    edit_Image.visibility =View.VISIBLE
+                }
+
+                toDoListViewModel.updateTodo(todoA)
+
+            }
 
 
             //   checkBoxIsCheck.text=todo.isSoled
@@ -122,23 +158,27 @@ class Todolist:Fragment() {
 
         override fun onClick(v: View?) {
 
-           // toDoListViewModel.deleteTodo(todoA)
-            if (v==itemView){
-               // toDoListViewModel.deleteTodo(todoA)
-                val fragment= FragmentListAdd()
+            // toDoListViewModel.deleteTodo(todoA)
+            if (v == edit_Image) {
+                // toDoListViewModel.deleteTodo(todoA)
+                val fragment = FragmentListAdd()
                 toDoListViewModel.updateTodo(todoA)
-                val args=Bundle()
-                args.putSerializable(KEY_ID,todoA.id)
-                fragment.arguments=args
+                val args = Bundle()
+                args.putSerializable(KEY_ID, todoA.id)
+                fragment.arguments = args
 
-                        activity?.let{
-                            it.supportFragmentManager
-                                .beginTransaction()
-                                .replace(R.id.fragment_Container,fragment)
-                                .addToBackStack(null)
-                                .commit()
+                activity?.let {
+                    it.supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragment_Container, fragment)
+                        .addToBackStack(null)
+                        .commit()
                 }
-
+            }
+        if (v == checkBoxIsCheck) {
+            todoA.isChecked
+                dale_Image.visibility = View.GONE
+                edit_Image.visibility = View.GONE
             }
             }
         }

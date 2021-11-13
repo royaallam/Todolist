@@ -13,8 +13,6 @@ class DatePickerDialogFrahment:DialogFragment() {
     interface DatePickerCallback{
         fun  onDateSelected(date: Date)
     }
-
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
         val date = arguments?.getSerializable(TODO_DATE_KEY) as? Date
@@ -36,9 +34,6 @@ class DatePickerDialogFrahment:DialogFragment() {
                 (it as DatePickerCallback).onDateSelected(resultDate)
             }
         }
-
-
-
         return DatePickerDialog(
             requireContext(),
             datelistener,

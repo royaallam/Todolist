@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,7 +35,20 @@ class Todolist:Fragment() {
         super.onCreate(savedInstanceState)
 
         setHasOptionsMenu(true)
-    //   onCreate(g)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        super.onOptionsItemSelected(item)
+        return when (item.itemId) {
+            R.id.item_list -> {
+                toDoListViewModel.getDate().observe(viewLifecycleOwner,
+                    Observer {
+                        updateUI(it)
+                    })
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onCreateView(
@@ -125,21 +139,6 @@ class Todolist:Fragment() {
                   dat_done.error = "DONE"
               }
           }
-//            checkBoxIsCheck.visibility=if (todoA.isChecked){
-//                dat_done.visibility=View.GONE
-//                View.VISIBLE
-//            }else{
-//                View.GONE
-//            }
-
-//            if (checkBoxIsCheck.isChecked) {
-//                todoA.isChecked
-//            }
-//
-//            if (todoA.isChecked) {
-//
-//            }
-
             if (todoA.isChecked){
                 edit_Image.visibility = View.GONE
                 //dale_Image.visibility = View.GONE
@@ -166,16 +165,12 @@ class Todolist:Fragment() {
 
             }
 
-
-            //   checkBoxIsCheck.text=todo.isSoled
-
         }
 
         override fun onClick(v: View?) {
 
-            // toDoListViewModel.deleteTodo(todoA)
+
             if (v == edit_Image) {
-                // toDoListViewModel.deleteTodo(todoA)
                 val fragment = FragmentListAdd()
                 toDoListViewModel.updateTodo(todoA)
                 val args = Bundle()

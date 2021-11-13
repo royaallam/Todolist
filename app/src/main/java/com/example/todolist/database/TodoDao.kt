@@ -21,6 +21,6 @@ interface TodoDao {
     @Delete
     fun deleteTodo (todo: Todo)
 
-    @Query("SELECT*FROM TODO ORDER BY dateEnd")
+    @Query("SELECT*FROM TODO ORDER BY dateStart")
     fun getDate():LiveData<List<Todo>>
 }

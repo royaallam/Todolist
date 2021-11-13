@@ -1,5 +1,6 @@
 package com.example.todolist
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 
 import com.example.todolist.database.Todo
@@ -18,8 +19,8 @@ class ToDoListViewModel:ViewModel() {
         todoRepository.updataTodo(todo)
     }
 
-    fun getDate(){
+    fun getDate(): LiveData<List<Todo>> =
         todoRepository.getDate()
-    }
+
 
 }

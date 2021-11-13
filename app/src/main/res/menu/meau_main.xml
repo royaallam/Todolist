@@ -5,6 +5,6 @@
     <item
         android:id="@+id/item_list"
         android:icon="@drawable/image_1"
-        android:title="Hide Completed"
+        android:title="creat data "
         app:showAsAction="never" />
 </menu>

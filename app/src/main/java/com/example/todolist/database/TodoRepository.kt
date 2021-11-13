@@ -41,9 +41,7 @@ class TodoRepository private constructor(context: Context) {
             todoDao.deleteTodo(todo)
         }
     }
-    fun getDate(): LiveData<List<Todo>> = todoDao.getAllTodo()
-
-
+    fun getDate(): LiveData<List<Todo>> = todoDao.getDate()
 
     companion object{
 
@@ -56,7 +54,7 @@ class TodoRepository private constructor(context: Context) {
         }
         fun get(): TodoRepository{
             return INSTANCE?:
-            throw IllegalStateException("CrimeRepositor must be initialized")
+            throw IllegalStateException("ToDoList Repositor must be initialized")
         }
     }
 

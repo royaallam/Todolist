@@ -22,10 +22,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="336dp"
         android:clickable="true"
+
+        app:backgroundTint="#000051"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96"
-        app:srcCompat="@drawable/image_2" />
+        app:layout_constraintVertical_bias="0.976"
+        app:rippleColor="#FFFFFF"
+        app:srcCompat="@drawable/image_2"
+        app:useCompatPadding="false" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,12 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/Todolist/app/src/main/res/drawable/imag_3.xml" value="0.1045" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/Todolist/app/src/main/res/drawable/image1.xml" value="0.1" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/Todolist/app/src/main/res/drawable/image_1.xml" value="0.1045" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/Todolist/app/src/main/res/drawable/image_4.xml" value="0.1" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/Todolist/app/src/main/res/layout/activity_main.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/Todolist/app/src/main/res/layout/fragment_list_add.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/Todolist/app/src/main/res/layout/fragment_list_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/Todolist/app/src/main/res/layout/fragment_list_rec.xml" value="0.253125" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/Todolist/app/src/main/res/layout/fragment_list_recycler.xml" value="0.264" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/Todolist/app/src/main/res/layout/imamain.xml" value="0.4" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/Todolist/app/src/main/res/layout/list_item_todo.xml" value="0.6" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/Todolist/app/src/main/res/layout/main_list.xml" value="0.253125" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/Todolist/app/src/main/res/layout/to_do_list.xml" value="1.5" />

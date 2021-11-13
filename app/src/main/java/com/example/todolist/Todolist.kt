@@ -27,12 +27,14 @@ class Todolist:Fragment() {
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.meau_main,menu)
+
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setHasOptionsMenu(true)
-
+    //   onCreate(g)
     }
 
     override fun onCreateView(
@@ -57,6 +59,7 @@ class Todolist:Fragment() {
                     .addToBackStack(null)
                     .commit()
             }
+
         }
         return view
 
@@ -66,6 +69,7 @@ class Todolist:Fragment() {
         toDoListViewModel.LiveDataTodo.observe(
             viewLifecycleOwner, Observer {
                 updateUI(it)
+
             }
         )
     }
@@ -118,7 +122,7 @@ class Todolist:Fragment() {
 
          if (todoA.dateStart != null){
               if (currentDate.after(todoA.dateStart)) {
-                  dat_done.error = ""
+                  dat_done.error = "DONE"
               }
           }
 //            checkBoxIsCheck.visibility=if (todoA.isChecked){
@@ -137,20 +141,24 @@ class Todolist:Fragment() {
 //            }
 
             if (todoA.isChecked){
-                dale_Image.visibility = View.GONE
                 edit_Image.visibility = View.GONE
+                //dale_Image.visibility = View.GONE
+
             }else{
-                dale_Image.visibility=View.VISIBLE
                 edit_Image.visibility =View.VISIBLE
+                //dale_Image.visibility=View.VISIBLE
+
             }
             checkBoxIsCheck.setOnCheckedChangeListener { buttonView, isChecked ->
                 todoA.isChecked = isChecked
                 if (todoA.isChecked){
-                    dale_Image.visibility = View.GONE
                     edit_Image.visibility = View.GONE
+                    dale_Image.visibility = View.GONE
+
                 }else{
-                    dale_Image.visibility=View.VISIBLE
                     edit_Image.visibility =View.VISIBLE
+                    dale_Image.visibility=View.VISIBLE
+
                 }
 
 

@@ -14,8 +14,13 @@ interface TodoDao {
 
     @Update
     fun updataTodo(todo: Todo)
+
     @Insert
     fun addTodo(todo: Todo)
+
     @Delete
     fun deleteTodo (todo: Todo)
+
+    @Query("SELECT*FROM TODO ORDER BY dateEnd")
+    fun getDate():LiveData<List<Todo>>
 }

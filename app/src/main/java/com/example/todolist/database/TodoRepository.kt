@@ -41,6 +41,8 @@ class TodoRepository private constructor(context: Context) {
             todoDao.deleteTodo(todo)
         }
     }
+    fun getDate(): LiveData<List<Todo>> = todoDao.getAllTodo()
+
 
 
     companion object{

@@ -5,6 +5,6 @@
     <item
         android:id="@+id/item_list"
         android:icon="@drawable/image_1"
-        android:title="sort for name"
+        android:title="Hide Completed"
         app:showAsAction="never" />
 </menu>

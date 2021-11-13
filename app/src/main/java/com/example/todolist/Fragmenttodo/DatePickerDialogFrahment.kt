@@ -7,7 +7,7 @@ import androidx.fragment.app.DialogFragment
 import java.util.*
 
 class DatePickerDialogFrahment:DialogFragment() {
-    val format="yyyy-MM-ddd"
+    val format="EEE, yyyy MMM dd"
 
 
     interface DatePickerCallback{

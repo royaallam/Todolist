@@ -24,7 +24,7 @@ import java.util.*
     private lateinit var dateStr: Button
     private lateinit var addbtm: Button
     private lateinit var editup:Button
-    val format="yyyy-MM-ddd"
+    val format="EEE, yyyy MMM dd"
 
     private val framentViewModel by lazy{
         ViewModelProvider(this).get(TodoAFragmentViewModel::class.java) }

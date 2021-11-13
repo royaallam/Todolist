@@ -17,4 +17,9 @@ class ToDoListViewModel:ViewModel() {
     fun updateTodo(todo: Todo) {
         todoRepository.updataTodo(todo)
     }
+
+    fun getDate(){
+        todoRepository.getDate()
+    }
+
 }

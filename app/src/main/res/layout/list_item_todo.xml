@@ -6,19 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
-    android:background="#BA6A8D">
+    android:background="#aab6fe">
 
     <TextView
         android:id="@+id/title_item_todo"
         android:layout_width="86dp"
         android:layout_height="33dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:lineSpacingExtra="12sp"
         android:text="title_todo"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#130E0E"
-        android:textSize="18dp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,10 +27,11 @@
         android:id="@+id/decpation_item_todo"
         android:layout_width="102dp"
         android:layout_height="28dp"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="56dp"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="sans-serif-condensed-medium"
         android:text="decpation "
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#100D0D"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,29 +44,48 @@
         android:layout_height="0dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="84dp"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="sans-serif-condensed-medium"
         android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/ischeck_item"
-        android:layout_width="102dp"
-        android:layout_height="36dp"
+        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+        android:layout_width="122dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="12dp"
-        android:text="CheckBox"
+        android:checked="false"
+        android:fontFamily="sans-serif-medium"
+        android:text="Completed"
+        android:textSize="16sp"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <ImageView
+        android:id="@+id/edit_ima"
+        android:layout_width="41dp"
+        android:layout_height="28dp"
+        android:background="#AAB6FE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.205"
+        app:srcCompat="@drawable/image_4" />
+
+    <ImageView
         android:id="@+id/delete_Iamge"
         android:layout_width="37dp"
         android:layout_height="34dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="36dp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -76,22 +97,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="204dp"
-        android:text="done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.747" />
-
-    <ImageView
-        android:id="@+id/edit_ima"
-        android:layout_width="41dp"
-        android:layout_height="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.915"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.794"
-        app:srcCompat="@drawable/image_4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
